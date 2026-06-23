@@ -1,6 +1,6 @@
 import boto3
 from botocore.exceptions import ClientError
-from datetime import datetime
+from scanner.utils import create_finding
 
 s3 = boto3.client("s3")
 
@@ -17,24 +17,12 @@ def scan_s3():
 
             if status != "Enabled":
                 findings.append(
-                    {
-                        "service":"S3",
-                        "resource": bucket_name,
-                        "severity": "LOW",
-                        "issue": "Versioning disabled",
-                        "timestamp": datetime.now().isoformat()
-                    }
+                        create_finding("S3", bucket_name, "LOW", "Versioning disabled")
                 )
         
         except ClientError as e:
             findings.append(
-                {
-                    "service":"S3",
-                    "resource": bucket_name,
-                    "severity": "MEDIUM",        
-                    "issue": f"Unable to check versioning: {str(e)}",
-                    "timestamp": datetime.now().isoformat()
-                }
+                    create_finding("S3", bucket_name, "MEDIUM", f"Unable to check versioning: {str(e)}")
             )
 
         try:
@@ -46,24 +34,12 @@ def scan_s3():
 
             if error_code == "ServerSideEncryptionConfigurationNotFoundError":
                 findings.append(
-                    {
-                        "service":"S3",
-                        "resource": bucket_name,
-                        "severity": "MEDIUM",        
-                        "issue": "Bucket encryption disabled",
-                        "timestamp": datetime.now().isoformat()
-                    }
+                        create_finding("S3", bucket_name, "MEDIUM", "Bucket default encryption not configured")
                 )
 
             else:
                 findings.append(
-                    {
-                        "service":"S3",
-                        "resource": bucket_name,
-                        "severity": "MEDIUM",        
-                        "issue": f"Unable to check encryption: {error_code}",
-                        "timestamp": datetime.now().isoformat()
-                    }
+                        create_finding("S3", bucket_name, "MEDIUM", f"Unable to check encryption: {error_code}")
                 )
 
         try:
@@ -72,13 +48,7 @@ def scan_s3():
 
             if not all(config.values()):
                 findings.append(
-                    {
-                        "service":"S3",
-                        "resource": bucket_name,
-                        "severity": "HIGH",        
-                        "issue": "Public access block partially disabled",
-                        "timestamp": datetime.now().isoformat()
-                    }
+                        create_finding("S3", bucket_name, "HIGH", "Public access block partially disabled")
                 )
             
         except ClientError as e:
@@ -86,24 +56,12 @@ def scan_s3():
 
             if error_code == "NoSuchPublicAccessBlockConfiguration":
                 findings.append(
-                    {
-                        "service":"S3",
-                        "resource": bucket_name,
-                        "severity": "HIGH",        
-                        "issue": "Public access block not configured",
-                        "timestamp": datetime.now().isoformat()
-                    }
+                        create_finding("S3", bucket_name, "HIGH", "Public access block not configured")
                 )
 
             else:
                 findings.append(
-                    {
-                        "service":"S3",
-                        "resource": bucket_name,
-                        "severity": "MEDIUM",        
-                        "issue": f"Unable to check public access block: {error_code}",
-                        "timestamp": datetime.now().isoformat()
-                    }
+                        create_finding("S3", bucket_name, "MEDIUM", f"Unable to check public access block: {error_code}")
                 )
 
     return findings
