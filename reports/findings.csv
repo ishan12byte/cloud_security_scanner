@@ -1,0 +1,24 @@
+service,resource,severity,issue,timestamp
+Security Group,launch-wizard-6(sg-03a6c4c1a4a9b6749),HIGH,SSH open to the internet,2026-06-27T08:15:51.350426
+Security Group,launch-wizard-5(sg-05f7aff6fdb659fff),HIGH,SSH open to the internet,2026-06-27T08:15:51.350448
+Security Group,launch-wizard-14(sg-0378df273cc0c3f7b),HIGH,SSH open to the internet,2026-06-27T08:15:51.350461
+Security Group,launch-wizard-4(sg-033a965a077d72d6a),HIGH,SSH open to the internet,2026-06-27T08:15:51.350466
+Security Group,launch-wizard-15(sg-0130937fbfda49f4d),HIGH,SSH open to the internet,2026-06-27T08:15:51.350472
+IAM,cloud_storage_user,MEDIUM,MFA not enabled,2026-06-27T08:15:52.361322
+IAM,SecurityScannerUser,MEDIUM,MFA not enabled,2026-06-27T08:15:53.245983
+EC2,vol-0ca6c325e99735a26,MEDIUM,Volume is not encrypted,2026-06-27T08:15:56.978220
+EC2,vol-08f1365e2c1b15315,MEDIUM,Volume is not encrypted,2026-06-27T08:15:56.978228
+EC2,vol-049ab548890bd0da0,MEDIUM,Volume is not encrypted,2026-06-27T08:15:56.978230
+EC2,vol-01b68bd1949ba0577,MEDIUM,Volume is not encrypted,2026-06-27T08:15:56.978231
+EC2,vol-052d4d3351b729a53,MEDIUM,Volume is not encrypted,2026-06-27T08:15:56.978233
+S3,security-scanner-test-1,LOW,Versioning disabled,2026-06-27T08:15:50.041348
+EC2,i-0cbcb73206dcd8041,LOW,Instance is stopped,2026-06-27T08:15:54.983145
+EC2,i-0cbcb73206dcd8041,LOW,Termination protection disabled,2026-06-27T08:15:55.357347
+EC2,i-094b29c2612860c6c,LOW,Instance is stopped,2026-06-27T08:15:55.357360
+EC2,i-094b29c2612860c6c,LOW,Termination protection disabled,2026-06-27T08:15:55.677822
+EC2,i-0a780e34347fc1208,LOW,Instance is stopped,2026-06-27T08:15:55.677835
+EC2,i-0a780e34347fc1208,LOW,Termination protection disabled,2026-06-27T08:15:56.023057
+EC2,i-01a878adb69d8729a,LOW,Instance is stopped,2026-06-27T08:15:56.023071
+EC2,i-01a878adb69d8729a,LOW,Termination protection disabled,2026-06-27T08:15:56.388887
+EC2,i-0bfdc65e1cdf2369d,LOW,Instance is stopped,2026-06-27T08:15:56.388899
+EC2,i-0bfdc65e1cdf2369d,LOW,Termination protection disabled,2026-06-27T08:15:56.715820

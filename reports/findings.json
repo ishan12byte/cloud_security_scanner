@@ -1,0 +1,163 @@
+[
+    {
+        "service": "Security Group",
+        "resource": "launch-wizard-6(sg-03a6c4c1a4a9b6749)",
+        "severity": "HIGH",
+        "issue": "SSH open to the internet",
+        "timestamp": "2026-06-27T08:15:51.350426"
+    },
+    {
+        "service": "Security Group",
+        "resource": "launch-wizard-5(sg-05f7aff6fdb659fff)",
+        "severity": "HIGH",
+        "issue": "SSH open to the internet",
+        "timestamp": "2026-06-27T08:15:51.350448"
+    },
+    {
+        "service": "Security Group",
+        "resource": "launch-wizard-14(sg-0378df273cc0c3f7b)",
+        "severity": "HIGH",
+        "issue": "SSH open to the internet",
+        "timestamp": "2026-06-27T08:15:51.350461"
+    },
+    {
+        "service": "Security Group",
+        "resource": "launch-wizard-4(sg-033a965a077d72d6a)",
+        "severity": "HIGH",
+        "issue": "SSH open to the internet",
+        "timestamp": "2026-06-27T08:15:51.350466"
+    },
+    {
+        "service": "Security Group",
+        "resource": "launch-wizard-15(sg-0130937fbfda49f4d)",
+        "severity": "HIGH",
+        "issue": "SSH open to the internet",
+        "timestamp": "2026-06-27T08:15:51.350472"
+    },
+    {
+        "service": "IAM",
+        "resource": "cloud_storage_user",
+        "severity": "MEDIUM",
+        "issue": "MFA not enabled",
+        "timestamp": "2026-06-27T08:15:52.361322"
+    },
+    {
+        "service": "IAM",
+        "resource": "SecurityScannerUser",
+        "severity": "MEDIUM",
+        "issue": "MFA not enabled",
+        "timestamp": "2026-06-27T08:15:53.245983"
+    },
+    {
+        "service": "EC2",
+        "resource": "vol-0ca6c325e99735a26",
+        "severity": "MEDIUM",
+        "issue": "Volume is not encrypted",
+        "timestamp": "2026-06-27T08:15:56.978220"
+    },
+    {
+        "service": "EC2",
+        "resource": "vol-08f1365e2c1b15315",
+        "severity": "MEDIUM",
+        "issue": "Volume is not encrypted",
+        "timestamp": "2026-06-27T08:15:56.978228"
+    },
+    {
+        "service": "EC2",
+        "resource": "vol-049ab548890bd0da0",
+        "severity": "MEDIUM",
+        "issue": "Volume is not encrypted",
+        "timestamp": "2026-06-27T08:15:56.978230"
+    },
+    {
+        "service": "EC2",
+        "resource": "vol-01b68bd1949ba0577",
+        "severity": "MEDIUM",
+        "issue": "Volume is not encrypted",
+        "timestamp": "2026-06-27T08:15:56.978231"
+    },
+    {
+        "service": "EC2",
+        "resource": "vol-052d4d3351b729a53",
+        "severity": "MEDIUM",
+        "issue": "Volume is not encrypted",
+        "timestamp": "2026-06-27T08:15:56.978233"
+    },
+    {
+        "service": "S3",
+        "resource": "security-scanner-test-1",
+        "severity": "LOW",
+        "issue": "Versioning disabled",
+        "timestamp": "2026-06-27T08:15:50.041348"
+    },
+    {
+        "service": "EC2",
+        "resource": "i-0cbcb73206dcd8041",
+        "severity": "LOW",
+        "issue": "Instance is stopped",
+        "timestamp": "2026-06-27T08:15:54.983145"
+    },
+    {
+        "service": "EC2",
+        "resource": "i-0cbcb73206dcd8041",
+        "severity": "LOW",
+        "issue": "Termination protection disabled",
+        "timestamp": "2026-06-27T08:15:55.357347"
+    },
+    {
+        "service": "EC2",
+        "resource": "i-094b29c2612860c6c",
+        "severity": "LOW",
+        "issue": "Instance is stopped",
+        "timestamp": "2026-06-27T08:15:55.357360"
+    },
+    {
+        "service": "EC2",
+        "resource": "i-094b29c2612860c6c",
+        "severity": "LOW",
+        "issue": "Termination protection disabled",
+        "timestamp": "2026-06-27T08:15:55.677822"
+    },
+    {
+        "service": "EC2",
+        "resource": "i-0a780e34347fc1208",
+        "severity": "LOW",
+        "issue": "Instance is stopped",
+        "timestamp": "2026-06-27T08:15:55.677835"
+    },
+    {
+        "service": "EC2",
+        "resource": "i-0a780e34347fc1208",
+        "severity": "LOW",
+        "issue": "Termination protection disabled",
+        "timestamp": "2026-06-27T08:15:56.023057"
+    },
+    {
+        "service": "EC2",
+        "resource": "i-01a878adb69d8729a",
+        "severity": "LOW",
+        "issue": "Instance is stopped",
+        "timestamp": "2026-06-27T08:15:56.023071"
+    },
+    {
+        "service": "EC2",
+        "resource": "i-01a878adb69d8729a",
+        "severity": "LOW",
+        "issue": "Termination protection disabled",
+        "timestamp": "2026-06-27T08:15:56.388887"
+    },
+    {
+        "service": "EC2",
+        "resource": "i-0bfdc65e1cdf2369d",
+        "severity": "LOW",
+        "issue": "Instance is stopped",
+        "timestamp": "2026-06-27T08:15:56.388899"
+    },
+    {
+        "service": "EC2",
+        "resource": "i-0bfdc65e1cdf2369d",
+        "severity": "LOW",
+        "issue": "Termination protection disabled",
+        "timestamp": "2026-06-27T08:15:56.715820"
+    }
+]
