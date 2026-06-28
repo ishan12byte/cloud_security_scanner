@@ -3,9 +3,7 @@ from botocore.exceptions import ClientError
 
 from scanner.utils import create_finding
 
-ec2 = boto3.client("ec2")
-
-def scan_ec2():
+def scan_ec2(ec2):
     findings = []
 
     try:

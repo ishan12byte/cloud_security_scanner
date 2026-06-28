@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="mb-4">
+    Cloud Security Scanner
+</h1>
+
+<div class="row g-4">
+
+    <div class="col-md-3">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+
+                <h5>Security Score</h5>
+
+                <h2>{{ score.score }}/100</h2>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+
+                <h5>Total Findings</h5>
+
+                <h2>{{ summary.total_findings }}</h2>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+
+                <h5>Services</h5>
+
+                <h2>{{ summary.services|length }}</h2>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+
+                <h5>Last Scan</h5>
+
+                <h5>{{ scan_time if scan_time else "No Scan Yet" }}</h5>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+{% if account %}
+
+<div class="card shadow-sm mt-4 mb-4">
+
+    <div class="card-body">
+
+        <h5 class="card-title">
+            Connected AWS Account
+        </h5>
+
+        <p class="mb-1">
+            <strong>Account ID:</strong>
+            {{ account.account_id }}
+        </p>
+
+        <p class="mb-0">
+            <strong>Identity:</strong>
+            {{ account.arn }}
+        </p>
+
+        <p class="mb-1">
+            <strong>Region:</strong>
+            {{ account.region }}
+        </p>
+    </div>
+
+</div>
+
+{% endif %}
+<br>
+
+<h3 class="mb-3">
+    Findings by Severity
+</h3>
+
+<div class="row g-4">
+
+    <div class="col-md-3">
+        <div class="card text-center border-danger shadow-sm">
+
+            <div class="card-body">
+
+                <h5>Critical</h5>
+
+                <h2 class="text-danger">
+                    {{ summary.severity.critical }}
+                </h2>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center border-warning shadow-sm">
+
+            <div class="card-body">
+
+                <h5>High</h5>
+
+                <h2 class="text-warning">
+                    {{ summary.severity.high }}
+                </h2>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center border-primary shadow-sm">
+
+            <div class="card-body">
+
+                <h5>Medium</h5>
+
+                <h2 class="text-primary">
+                    {{ summary.severity.medium }}
+                </h2>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center border-success shadow-sm">
+
+            <div class="card-body">
+
+                <h5>Low</h5>
+
+                <h2 class="text-success">
+                    {{ summary.severity.low }}
+                </h2>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<hr class="my-5">
+
+<h3 class="mb-3">
+    Findings by Service
+</h3>
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <ul class="list-group list-group-flush">
+
+            {% for service, count in summary.services.items() %}
+
+            <li class="list-group-item d-flex justify-content-between">
+
+                <strong>{{ service }}</strong>
+
+                <span class="badge bg-primary rounded-pill">
+                    {{ count }}
+                </span>
+
+            </li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+</div>
+
+<hr class="my-5">
+
+<h3 class="mb-3">
+    Recent Findings
+</h3>
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Severity</th>
+                    <th>Service</th>
+                    <th>Issue</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for finding in findings[:5] %}
+
+                <tr>
+
+                    <td>{{ finding.severity }}</td>
+
+                    <td>{{ finding.service }}</td>
+
+                    <td>{{ finding.issue }}</td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

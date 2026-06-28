@@ -4,9 +4,7 @@ from datetime import datetime, timezone
 
 from scanner.utils import create_finding
 
-iam = boto3.client("iam")
-
-def scan_iam():
+def scan_iam(iam):
     findings = []
     privileged_policies = {"AdministratorAccess", "PowerUserAccess"}
 

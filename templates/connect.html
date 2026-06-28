@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Connect AWS Account</h2>
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <form method="POST">
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    AWS Access Key ID
+
+                </label>
+
+                <input
+                    type="text"
+                    name="access_key"
+                    class="form-control"
+                    required>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    AWS Secret Access Key
+
+                </label>
+
+                <input
+                    type="password"
+                    name="secret_key"
+                    class="form-control"
+                    required>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    AWS Region
+
+                </label>
+
+                <input
+                    type="text"
+                    name="region"
+                    class="form-control"
+                    value="ap-south-1"
+                    required>
+
+            </div>
+
+            <button class="btn btn-primary">
+
+                Connect & Run Scan
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

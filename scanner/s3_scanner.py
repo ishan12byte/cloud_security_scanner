@@ -2,9 +2,7 @@ import boto3
 from botocore.exceptions import ClientError
 from scanner.utils import create_finding
 
-s3 = boto3.client("s3")
-
-def scan_s3():
+def scan_s3(s3):
     findings = []
     buckets = s3.list_buckets()["Buckets"]
 

@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a
+href="/download/json"
+class="btn btn-success">
+
+Download JSON
+
+</a>
+
+<a
+href="/download/csv"
+class="btn btn-secondary">
+
+Download CSV
+
+</a>
+
+<h1 class="mb-4">
+    Security Findings
+</h1>
+
+{% if findings %}
+<form method="GET" class="row mb-4">
+
+    <div class="col-md-4">
+
+        <select
+            name="severity"
+            class="form-select">
+
+            <option value="">All Severities</option>
+
+            <option value="CRITICAL" {% if selected_severity=="CRITICAL" %}selected{% endif %}>Critical</option>
+
+            <option value="HIGH" {% if selected_severity=="HIGH" %}selected{% endif %}>High</option>
+
+            <option value="MEDIUM" {% if selected_severity=="MEDIUM" %}selected{% endif %}>Medium</option>
+
+            <option value="LOW" {% if selected_severity=="LOW" %}selected{% endif %}>Low</option>
+
+        </select>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <select
+            name="service"
+            class="form-select">
+
+            <option value="">All Services</option>
+
+            <option>S3</option>
+
+            <option>IAM</option>
+
+            <option>EC2</option>
+
+            <option>Security Group</option>
+
+        </select>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <button
+            class="btn btn-primary w-100">
+
+            Apply Filters
+
+        </button>
+
+    </div>
+
+</form>
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <table class="table table-hover align-middle">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>Severity</th>
+                    <th>Service</th>
+                    <th>Resource</th>
+                    <th>Issue</th>
+                    <th>Timestamp</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for finding in findings %}
+
+                <tr>
+
+                    <td>
+
+                        {% if finding.severity == "CRITICAL" %}
+                            <span class="badge bg-danger">CRITICAL</span>
+
+                        {% elif finding.severity == "HIGH" %}
+                            <span class="badge bg-warning text-dark">HIGH</span>
+
+                        {% elif finding.severity == "MEDIUM" %}
+                            <span class="badge bg-primary">MEDIUM</span>
+
+                        {% else %}
+                            <span class="badge bg-success">LOW</span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>{{ finding.service }}</td>
+
+                    <td>{{ finding.resource }}</td>
+
+                    <td>{{ finding.issue }}</td>
+
+                    <td>{{ finding.timestamp }}</td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% else %}
+
+<div class="alert alert-success">
+
+<h4>
+
+🎉 No Security Findings
+
+</h4>
+
+<p>
+
+Your AWS environment appears secure based on the implemented checks.
+
+</div>
+
+{% endif %}
+
+{% endblock %}

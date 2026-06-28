@@ -1,9 +1,7 @@
 import boto3
 from scanner.utils import create_finding
 
-ec2 = boto3.client("ec2")
-
-def scan_security_groups():
+def scan_security_groups(ec2):
     findings = []
 
     groups = ec2.describe_security_groups()["SecurityGroups"]
