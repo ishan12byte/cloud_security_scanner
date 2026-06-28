@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, request, send_file, flash
 import boto3
 from botocore.exceptions import ClientError
+from datetime import datetime
 
 from scanner.main_scanner import run_scan
 from services.summary import generate_summary
@@ -16,6 +17,12 @@ app.secret_key = "sdfha;wah38723872rfhhjjklfs"
 def dashboard():
 
     data = load_scan()
+    scan_time = None
+
+    if data["scan_time"]:
+        scan_time = datetime.fromisoformat(
+            data["scan_time"]
+        ).strftime("%d %b %Y, %I:%M %p")
     
     findings = data["findings"]
 
@@ -28,7 +35,7 @@ def dashboard():
         findings=findings,
         summary=summary,
         score=score,
-        scan_time=data["scan_time"],
+        scan_time=scan_time,
         account=data.get("account")
     )
     
@@ -129,6 +136,11 @@ def connect():
             flash("Unable to connect to AWS. Check your credentials.")
 
     return render_template("connect.html")
+
+@app.route("/setup")
+def setup():
+
+    return render_template("setup.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

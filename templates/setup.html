@@ -1,0 +1,418 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="mb-4">
+    Cloud Security Scanner Setup Guide
+</h1>
+
+<p class="text-muted mb-4">
+    Follow these steps to securely connect your AWS account and perform a
+    read-only security assessment.
+</p>
+
+<div class="accordion" id="setupGuide">
+
+    <!-- Step 1 -->
+
+    <div class="accordion-item">
+
+        <h2 class="accordion-header">
+
+            <button class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#step1">
+
+                Step 1 • Prerequisites
+
+            </button>
+
+        </h2>
+
+        <div id="step1"
+             class="accordion-collapse collapse show">
+
+            <div class="accordion-body">
+
+                <ul>
+
+                    <li>An active AWS Account</li>
+
+                    <li>Permission to create IAM users</li>
+
+                    <li>Python application running locally</li>
+
+                    <li>Internet connection</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Step 2 -->
+
+    <div class="accordion-item">
+
+        <h2 class="accordion-header">
+
+            <button class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#step2">
+
+                Step 2 • Create an IAM User
+
+            </button>
+
+        </h2>
+
+        <div id="step2"
+             class="accordion-collapse collapse">
+
+            <div class="accordion-body">
+
+                <p>
+
+                    Navigate to:
+
+                </p>
+
+<pre>
+AWS Console
+    ↓
+IAM
+    ↓
+Users
+    ↓
+Create User
+    ↓
+SecurityScannerUser
+</pre>
+
+                <div class="alert alert-warning">
+
+                    Never use the AWS Root Account for scanning.
+                    Always create a dedicated IAM user.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Step 3 -->
+
+    <div class="accordion-item">
+
+        <h2 class="accordion-header">
+
+            <button class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#step3">
+
+                Step 3 • Attach Permissions
+
+            </button>
+
+        </h2>
+
+        <div id="step3"
+             class="accordion-collapse collapse">
+
+            <div class="accordion-body">
+
+                <h5>
+
+                    Attach AWS Managed Policy
+
+                </h5>
+
+                <div class="alert alert-info">
+
+                    <strong>ReadOnlyAccess</strong>
+
+                </div>
+
+                <p>
+
+                    This policy allows the scanner to inspect AWS resources
+                    without creating, modifying, or deleting them.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Step 4 -->
+
+    <div class="accordion-item">
+
+        <h2 class="accordion-header">
+
+            <button class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#step4">
+
+                Step 4 • Generate Access Keys
+
+            </button>
+
+        </h2>
+
+        <div id="step4"
+             class="accordion-collapse collapse">
+
+            <div class="accordion-body">
+
+<pre>
+IAM User
+    ↓
+Security Credentials
+    ↓
+Create Access Key
+    ↓
+Local Code
+</pre>
+
+                <p>
+
+                    Save the generated:
+
+                </p>
+
+                <ul>
+
+                    <li>Access Key ID</li>
+
+                    <li>Secret Access Key</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Step 5 -->
+
+    <div class="accordion-item">
+
+        <h2 class="accordion-header">
+
+            <button class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#step5">
+
+                Step 5 • Connect AWS
+
+            </button>
+
+        </h2>
+
+        <div id="step5"
+             class="accordion-collapse collapse">
+
+            <div class="accordion-body">
+
+                <p>
+
+                    Open the <strong>Connect AWS</strong> page.
+
+                </p>
+
+                <p>
+
+                    Enter:
+
+                </p>
+
+                <ul>
+
+                    <li>AWS Access Key ID</li>
+
+                    <li>AWS Secret Access Key</li>
+
+                    <li>AWS Region</li>
+
+                </ul>
+
+                <p>
+
+                    Click <strong>Connect & Run Scan</strong>.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Step 6 -->
+
+    <div class="accordion-item">
+
+        <h2 class="accordion-header">
+
+            <button class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#step6">
+
+                Step 6 • What Gets Scanned
+
+            </button>
+
+        </h2>
+
+        <div id="step6"
+             class="accordion-collapse collapse">
+
+            <div class="accordion-body">
+
+                <table class="table table-bordered">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th>AWS Service</th>
+
+                            <th>Security Checks</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>IAM</td>
+
+                            <td>
+
+                                MFA status<br>
+                                Administrator/PowerUser policies<br>
+                                Group inherited privileges<br>
+                                Multiple access keys<br>
+                                Old access keys
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Amazon S3</td>
+
+                            <td>
+
+                                Bucket Versioning<br>
+                                Default Encryption<br>
+                                Public Access Block
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>EC2</td>
+
+                            <td>
+
+                                Public IP<br>
+                                Stopped Instances<br>
+                                Termination Protection<br>
+                                EBS Encryption
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Security Groups</td>
+
+                            <td>
+
+                                SSH Exposure<br>
+                                RDP Exposure<br>
+                                Database Exposure<br>
+                                Internet Open Rules
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Step 7 -->
+
+    <div class="accordion-item">
+
+        <h2 class="accordion-header">
+
+            <button class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#step7">
+
+                Step 7 • Security Notice
+
+            </button>
+
+        </h2>
+
+        <div id="step7"
+             class="accordion-collapse collapse">
+
+            <div class="accordion-body">
+
+                <div class="alert alert-success">
+
+                    <ul>
+
+                        <li>Only read-only AWS API calls are performed.</li>
+
+                        <li>No AWS resources are modified.</li>
+
+                        <li>Credentials are used only for the current scan.</li>
+
+                        <li>Credentials are not stored permanently.</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
