@@ -11,7 +11,7 @@ from services.exporter import export_json, export_csv
 
 app = Flask(__name__)
 
-app.secret_key = "sdfha;wah38723872rfhhjjklfs"
+app.secret_key = os.environ.get("SECRET_KEY", "dev-secret-key")
 
 @app.route("/") 
 def dashboard():
