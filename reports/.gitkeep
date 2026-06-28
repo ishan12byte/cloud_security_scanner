@@ -1,1 +1,3 @@
 .gitkeep
+# This directory stores scan reports generated at runtime.
+# Generated reports are excluded from version control.
