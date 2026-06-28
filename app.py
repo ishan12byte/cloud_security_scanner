@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, request, send_file, flash
 import boto3
 from botocore.exceptions import ClientError
 from datetime import datetime
+import os
 
 from scanner.main_scanner import run_scan
 from services.summary import generate_summary
