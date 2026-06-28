@@ -363,11 +363,17 @@ It
 # 📸 Screenshots
 
 * Dashboard
+  <img width="1920" height="1873" alt="screencapture-verbose-space-spoon-x57jxqpgrrxfpvvx-5000-app-github-dev-2026-06-28-12_14_21" src="https://github.com/user-attachments/assets/a4bb8334-ac45-43c4-868b-8e8f1f753005" />
+
 * AWS Connection Page
+  <img width="1920" height="1080" alt="Screenshot 2026-06-28 121254" src="https://github.com/user-attachments/assets/28374c12-f6d6-4f3c-b3ef-41ef9f546565" />
+
 * Setup Guide
+  <img width="1920" height="1080" alt="Screenshot 2026-06-28 121530" src="https://github.com/user-attachments/assets/6468fa13-13d7-4dc5-a03a-468e2d4949e8" />
+
 * Findings Page
-* Findings Table
-* Security Score Cards
+  <img width="1920" height="1080" alt="Screenshot 2026-06-28 121654" src="https://github.com/user-attachments/assets/2a5f86f9-9d7a-4b5f-9ae9-346fdb762b72" />
+
 
 ---
 
